@@ -1,0 +1,11 @@
+"this is \t a string \n asif"
+"hello is \t a \
+world \n tanvir"
+"bye is \t a 
+string \n bye"
+"this is unfinished
+"this is unfinished\"
+// comment single
+/****** comment single **** 
+not so single  */
+'''

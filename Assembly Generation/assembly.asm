@@ -1,0 +1,104 @@
+.MODEL SMALL
+
+.STACK 100H
+
+.DATA
+
+.CODE
+
+a2 dw ? 
+b2 dw ? 
+i2 dw ? 
+t0 dw ? 
+a3 dw ? 
+b4 dw ? 
+
+main PROC
+	MOV AX, 0
+	MOV b2, AX
+	MOV AX, 0
+	MOV i2, AX
+L4:
+	MOV AX, i2
+	CMP AX, 4
+	JL L0
+	MOV t0, 0
+	JMP L1
+L0:
+	MOV t0, 1
+L1:
+	MOV AX, t0
+	CMP AX, 0
+	JE L5
+	MOV AX, i2
+	ADD AX, 1
+	MOV i2, AX
+	MOV AX, 3
+	MOV a3, AX
+	MOV AX, a3
+	SUB AX, 1
+	MOV a3, AX
+L2:
+	MOV AX, a3
+	CMP AX, 0
+	JE L3
+	MOV AX, b4
+	ADD AX, 1
+	MOV b4, AX
+	JMP L2
+L3:
+	JMP L4
+L5:
+	MOV AX, a2
+	CALL OUTDEC
+	MOV AX, b2
+	CALL OUTDEC
+	MOV AH,4CH
+	INT 21h
+main ENDP
+
+OUTDEC PROC
+	PUSH AX
+	PUSH BX
+	PUSH CX
+	PUSH DX
+
+	OR AX,AX
+	JGE NEXT
+
+	PUSH AX
+	MOV AH,2
+	MOV DL,'-'
+	INT 21h
+	POP AX
+	NEG AX
+
+NEXT:
+	XOR CX,CX
+	MOV BX,10D
+
+ASIF:
+	XOR DX,DX
+	DIV BX
+	PUSH DX
+	INC CX
+	OR AX,AX
+	JNE ASIF
+
+	MOV AH,2
+PRINT_LOOP:
+	POP DX
+	OR DL,30H
+	INT 21h
+	LOOP PRINT_LOOP
+
+	MOV DL,' '
+	INT 21h
+
+	POP DX
+	POP CX
+	POP BX
+	POP AX
+	RET
+OUTDEC ENDP
+END MAIN

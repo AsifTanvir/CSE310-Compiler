@@ -1,0 +1,4 @@
+<STRING,this is 	 a string 
+ asif><STRING,hello is 	 a 
+world 
+ tanvir><ID , string><ID , n><ID , bye>

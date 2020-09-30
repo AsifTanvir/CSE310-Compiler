@@ -1,0 +1,29 @@
+Line no 1: TOKEN <STRING> Lexeme this is 	 a string 
+ asif found
+Line no 2: TOKEN <STRING> Lexeme hello is 	 a 
+world 
+ tanvir found
+Error on line 4: unfinished string
+Line no 4: TOKEN <ID> Lexeme string found
+
+ Scope table #1
+  1 --->  < string : ID > 
+Line no 4: TOKEN <ID> Lexeme n found
+
+ Scope table #1
+  1 --->  < string : ID > 
+  2 --->  < n : ID > 
+Line no 4: TOKEN <ID> Lexeme bye found
+
+ Scope table #1
+  1 --->  < string : ID > < bye : ID > 
+  2 --->  < n : ID > 
+Error on line 5: unfinished string
+Error on line 6: unfinished string
+Error on line 7: unfinished string
+Line no 7: Token <COMMENT> Lexeme // comment single found
+Line no 9: TOKEN <COMMENT> Lexeme /****** comment single **** 
+not so single  */ found
+Error on line no 10: Unrecognized character '''
+Total Line: 11
+Total Error: 5
